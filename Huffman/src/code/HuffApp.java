@@ -50,6 +50,7 @@ public class HuffApp {
 		BufferedReader in = new BufferedReader(new FileReader(new File ("input.txt")));
 			
 				originalMessage= in.readLine();
+				in.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -67,7 +68,13 @@ public class HuffApp {
 		freqTable= new int[256];
 		for (int x=0; x<inputString.length();x++) {
 			tempChar=inputString.charAt(x);
-			freqTable[Character.getNumericValue(tempChar)]++;
+			freqTable[tempChar]++;
+		}
+		
+		for(int x=0;x<256;x++) {
+			if (freqTable[x]!=0) {
+				
+			}
 		}
 		
 		//populate the frequency table using inputString. results are saved to the 
@@ -88,18 +95,27 @@ public class HuffApp {
 	
 	private void addToQueue() 
 	{
+		for(int x=0;x<256;x++) {
+			if (freqTable[x]!=0) {
+				HuffTree tree= new HuffTree ((char) x,freqTable[x]);
+				theQueue.insert(tree);
+			}
+		}
+		
 		//add the values in the frequency table to the PriorityQueue. Hint use the 
 		//PriorityQ class. save the results to theQueue field
 	}
 	
 	private void buildTree(PriorityQ hufflist) 
 	{
+		
 		//pull items from the priority queue and combine them to form 
 		//a HuffTree. Save the results to the huffTree field
 	}
 	
 	private void makeCodeTable(HuffNode huffNode, String bc)
 	{		
+		
 		//hint, this will be a recursive method
 	}
 	

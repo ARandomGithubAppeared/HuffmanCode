@@ -83,7 +83,7 @@ public class HuffApp {
 	
 	private void displayFrequencyTable()
 	{	
-		char letter;
+		char letter;//
 		System.out.println("Frequency Table\nchar | val");
 		for(int x=0;x<256;x++) {
 			letter=(char) x;

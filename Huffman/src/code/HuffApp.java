@@ -84,10 +84,11 @@ public class HuffApp {
 	private void displayFrequencyTable()
 	{	
 		char letter;
+		System.out.println("Frequency Table\nchar | val");
 		for(int x=0;x<256;x++) {
 			letter=(char) x;
 			if (freqTable[x]!=0) {
-				System.out.println(letter+"    " + freqTable[x]);
+				System.out.println(letter+"    |" + freqTable[x]);
 			}
 		}
 		//print the frequency table. skipping any elements that are not represented

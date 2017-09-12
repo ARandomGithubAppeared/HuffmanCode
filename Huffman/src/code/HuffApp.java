@@ -1,6 +1,8 @@
 package code;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -44,6 +46,14 @@ public class HuffApp {
 	}
 	
 	private void readInput() {
+		try {
+		BufferedReader in = new BufferedReader(new FileReader(new File ("input.txt")));
+			
+				originalMessage= in.readLine();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		//read input in from the input.txt file and save to originalMessage	field
 	}
 	
@@ -53,12 +63,26 @@ public class HuffApp {
 	
 	private void makeFrequencyTable(String inputString)
 	{	
+		char tempChar;
+		freqTable= new int[256];
+		for (int x=0; x<inputString.length();x++) {
+			tempChar=inputString.charAt(x);
+			freqTable[Character.getNumericValue(tempChar)]++;
+		}
+		
 		//populate the frequency table using inputString. results are saved to the 
 		//freqTable field
 	}
 	
 	private void displayFrequencyTable()
 	{	
+		char letter;
+		for(int x=0;x<256;x++) {
+			letter=(char) x;
+			if (freqTable[x]!=0) {
+				System.out.println(letter+"    " + freqTable[x]);
+			}
+		}
 		//print the frequency table. skipping any elements that are not represented
 	}
 	
